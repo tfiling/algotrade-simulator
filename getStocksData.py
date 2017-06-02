@@ -1,11 +1,15 @@
 # -*- coding: utf8 -*-
+import datetime
 import numpy as np
 import csv
 import pandas as pn;
 import os;
 from dateutil.parser import parse
+from pandas._libs.tslib import NaTType
+
 data = {}
 YEARS = 5
+US_PRECENTAGE = 0.015
 DaysInYear = 365
 #תאריך,שער נעילה מתואם,שער נעילה (באגורות)    ,שינוי(%),שער פתיחה,שער בסיס,שער גבוה,שער נמוך,הון רשום למסחר,שווי שוק (אלפי ש"ח),מחזור מסחר(ש"ח),מחזור ביחידות,מספר עסקאות,סוג האקס *,מקדם אקס,ממ"מ,אחוז החזקות הציבור למדד
 renameColumns = ["date","closeValueNormlize","closeValueAG","changePG","OpenValue","baseValue","higheValue","lowValue","marketCapital","marketValueESH","tradeCycleSH","cycleUnits","numOfDeals","exType","exCofficient","numOfStocksInIndex","precentageOfPublicHoldings"]
@@ -38,6 +42,7 @@ def loadStocks(includeWorld,num = -1):
 
     #add world stocks TODO
     if(includeWorld):
+        USstocks = []
         for f in os.listdir("US_stocks"):
             usStock = pn.read_csv("US_stocks/" + f, skiprows=[0, 1], error_bad_lines=False, encoding="Windows-1255")
             usStock.fillna(usStock.mean())  # fill nan value
@@ -47,11 +52,18 @@ def loadStocks(includeWorld,num = -1):
             usStock.FFMCapi = 0.015
             usStock['closeValueNormlize'] = [x*100 for x in usStock['closeValueNormlize']] #ils to agorot
             usStock['marketCapital'] = [x * 1000 for x in usStock['marketCapital']]  # ils to 1000ILS
+            usStock['wightForFactorCheak'] = US_PRECENTAGE
+            usStock['date'] = pn.to_datetime(usStock['date'],dayfirst=True)
+            usStock['date'].fillna(method='pad',inplace=True)
+            usStock['date'] = [x.strftime('%d/%m/%Y') for x in usStock['date']]
+            # today close is tomorrow base
+            baseVal = usStock['closeValueNormlize']
+            baseVal = pn.Series(baseVal[0]).append(baseVal[:-1],ignore_index=True)
+            usStock['baseValue'] = baseVal
+            USstocks.append(usStock)
 
-            stocks.append(usStock)
-
-    return stocks
-
+        return stocks,USstocks
+    return stocks,None
 #add index file TODO
 def getIndex(idxName):
     return pn.read_csv(os.listdir("indexes/"+idxName +".csv"))
@@ -83,7 +95,7 @@ def bigerThan(stock2,stock1):
     else: return -1
 
 #see refrens in the pdf file from ofer
-def computeFFMCap(s):  #Q*F*f*P
+def computeFFMCap(s):  #f*Q*P*F
     return s.wightLimitFactor.values[0]*s.baseValue.values[0]*s.numOfStocksInIndex.values[0]*computeBigF(s.precentageOfPublicHoldings.values[0])
 
 #public holdings precentage - see refrens in the pdf file from ofer
@@ -103,8 +115,10 @@ def computeStockWeight(stock,sum): #Q*F*f*P/sum(i)(#Q*F*f*P)
 
 # compute Index value by using yesterday 's index value - see referents in the pdf file from ofer
 def computeIndex(IYesterday,stocks):
-   # print(stocks)
-    return IYesterday*sum([s.FFMCapi.values[0]*s.closeValueAG.values[0]/s.baseValue.values[0] for s in stocks])
+    return IYesterday*sum([s.wightForFactorCheak.values[0]*s.closeValueAG.values[0]/s.baseValue.values[0] for s in stocks])
+
+def computeIndexUS(iyesterday,stocks):
+    return iyesterday*sum([s.wightForFactorCheak.values[0]*s.closeValueNormlize.values[0]/s.baseValue.values[0] for s in stocks])
 
 
 #TODO?
@@ -116,66 +130,91 @@ def mixTwoindexes(idx1,idx2,precent1,precent2):
     return (idx1*precent1/100) + (idx2*precent2/100)
 
 #main function, returns new index (pandas DataFrame)
-def computeNewIndex(allStocks,numOfStocks,weightLimit):
+def computeUsIndex(lastValueUS, i, USStocks):
+
+    pass
+
+
+def computeNewIndex(ILStocks, numOfStocks, weightLimit, USStocks=None):
     #filter empty data
-    allStocks = [x for x in allStocks if not x.empty]
+    ILStocks = [x for x in ILStocks if not x.empty]
 
     #create empty object for the new index, and revers its order
-    newIdx = pn.DataFrame(allStocks[0]["date"]).iloc[::-1]
+    newIdx = pn.DataFrame(ILStocks[0]["date"]).iloc[::-1]
+    UsIdx = pn.DataFrame(ILStocks[0]["date"]).iloc[::-1]
     newIdx ['value'] = pn.Series(-1, index=newIdx.index)
-    for s in allStocks: s['FFMCapi'] = pn.Series(1, index=newIdx.index)  # initalize limit factor
-    for s in  allStocks: s['wightLimitFactor'] = pn.Series(1, index=newIdx.index)  # initalize limit factor
-    for s in allStocks: s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
-
+    UsIdx['value'] = pn.Series(-1, index=newIdx.index)
+    for s in  ILStocks: s['wightLimitFactor'] = pn.Series(1, index=newIdx.index)  # initalize limit factor
+    for s in ILStocks: s['publicHoldingsWorth'] = pn.Series(1, index=newIdx.index)  # initalize limit factor
+    for s in ILStocks: s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
+    if (USStocks != None):
+        for s in USStocks: s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
     idxStocks = []
-    lastValue = 1
-
+    lastValueIL = 1
+    lastValueUS = 1
+    dayCounter = 0
     for i in newIdx["date"]:
         #update indexes in the 1 of the month (or the start)
-        if idxStocks == [] or parse(i).day == 1:
+        dayCounter+=1
+        if idxStocks == [] or (parse(i).day >= 1 and parse(i).day <= 10 and dayCounter>25):
+            dayCounter = 0
+            idxStocks = getIndexStocks(ILStocks, numOfStocks, i)
             #pick the first n high value stocks
-            idxStocks = getIndexStocks(allStocks,numOfStocks,i)
-        #Take the current day from each stock in the new index
+            #Take the current day from each stock in the new index
+            idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
+            if(USStocks != None):
+                USStocksDay = list(s.loc[s['date'] == i] for s in USStocks)
+                j = parse(i) - datetime.timedelta(days=2)
 
-        #choose the relevant data for date i
-        idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
+                while(USStocksDay[0].empty): #skipp weekends
+                    #print(i)
+                    #print(USStocks)
+                    j = j - datetime.timedelta(days=1)
+                    USStocksDay = list(s.loc[s['date'] == j] for s in USStocks)
+            #limit the run to 50 times
+            for r in range(0,50) :
+                #sum of weights
+                # see referents in the pdf file from ofer, sec 3.b.2
+                for s in idxStocksDay:s.publicHoldingsWorth = computeFFMCap(s)
+                wightLimitFactorSum = sum(s.publicHoldingsWorth for s in idxStocksDay)
+                for s in idxStocksDay: s.wightForFactorCheak = s.publicHoldingsWorth/wightLimitFactorSum
 
+                #numpy.isclose(a, b, rtol=1e-05, atol=1e-08, equal_nan=False) rational round
+                FFMCapOverWeight = [s for s in idxStocksDay if s.wightForFactorCheak.values[0] > weightLimit  and not np.isclose(s.wightForFactorCheak.values[0],weightLimit)]
+                #v1 = sum([computeFFMCap(s) for s in idxStocksDay])
 
-        while True:
-            #sum of weights
-            sumWight = sum([computeFFMCap(s) for s in idxStocksDay])
+                FFMCapNonCap = sum([s.publicHoldingsWorth for s in idxStocksDay])- sum([s.publicHoldingsWorth for s in FFMCapOverWeight])
+                FFMCapQidx = FFMCapNonCap/(1-sum(weightLimit for s in FFMCapOverWeight)) #TODO weightLimit?
+                #print(sum(s.wightForFactorCheak for s in idxStocksDay))
+                for s in idxStocksDay:
+                    #print(s.wightForFactorCheak.values[0])
+                    if (s.wightForFactorCheak.values[0] > np.float(weightLimit) and not np.isclose(s.wightForFactorCheak.values[0],weightLimit)):
+                        s.publicHoldingsWorth = weightLimit*FFMCapQidx
+                        # print(s.publicHoldingsWorth / wightLimitFactorSum)
 
-            # weight factor for each stock
-            for s in idxStocksDay:
-                s.wightForFactorCheak = computeStockWeight(s,sumWight)
+                    s.wightLimitFactor = s.publicHoldingsWorth/(computeBigF(s.precentageOfPublicHoldings.values[0]) * s.baseValue.values[0] * s.numOfStocksInIndex.values[0])
 
-            # see referents in the pdf file from ofer
-            #for s in idxStocksDay: print(s.wightForFactorCheak.values[0])
-            FFMCapOverWeight = [s for s in idxStocksDay if s.wightForFactorCheak.values[0] > weightLimit]
-            #v1 = sum([computeFFMCap(s) for s in idxStocksDay])
+                #loop until no function value is over the limit
+                if([s for s in idxStocksDay if s.wightForFactorCheak.values[0] > weightLimit  and not np.isclose(s.wightForFactorCheak.values[0],weightLimit)] == []):
+                    break #loop until this happend
 
-            FFMCapNonCap = sum([computeFFMCap(s) for s in idxStocksDay])- sum([computeFFMCap(s) for s in FFMCapOverWeight])
-            FFMCapQidx = FFMCapNonCap/(1-sum(weightLimit for s in idxStocksDay)) #TODO weightLimit?
-
-            for s in idxStocksDay:
-                if (s.wightForFactorCheak.values[0] < s.wightLimitFactor.values[0]):
-                    s.FFMCapi  = s.wightForFactorCheak
-                else:
-                    s.FFMCapi = weightLimit*FFMCapQidx
-
-                s.wightLimitFactor = s.FFMCapi/(computeBigF(s.precentageOfPublicHoldings.values[0]) * s.baseValue.values[0] * s.numOfStocksInIndex.values[0])
-
-            #loop until no function value is over the limit
-            if([s for s in idxStocksDay if s.wightForFactorCheak.values[0] >= weightLimit] == []):
-                break #loop until this happend
-
+        # weight for each stock
+        sumWight = sum([computeFFMCap(s) for s in idxStocksDay])
+        for s in idxStocksDay:
+            s.wightForFactorCheak = computeStockWeight(s, sumWight)
         #compute date i value
 
-        lastValue = computeIndex(lastValue,idxStocksDay)
-        newIdx.loc[newIdx['date'] == i,["value"]] = lastValue
-        print(str(i) +"#" +str(lastValue))
+        lastValueIL = computeIndex(lastValueIL,idxStocksDay)
+        print (str(i) + "#" +str(lastValueIL))
+        if(USStocks!=None):
+            lastValueUS = computeIndexUS(lastValueUS,USStocksDay)
+            #mix both indexes
+            usfactor = US_PRECENTAGE*len(USStocksDay)
+            newIdx.loc[newIdx['date'] == i, ["value"]] = lastValueUS*usfactor + lastValueIL*(1-usfactor)
+        else:
+            newIdx.loc[newIdx['date'] == i,["value"]] = lastValueIL
     return newIdx
 
 
-stocks = loadStocks(False,50)
-print(computeNewIndex(stocks,25,0.07))
+stocks,usStocks = loadStocks(False,50)
+print(computeNewIndex(stocks,40,0.07,usStocks))
