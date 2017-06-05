@@ -1,0 +1,56 @@
+body {
+    background: url(../media/stocks.jpg) no-repeat fixed center;
+    background-size: cover;
+    -webkit-background-size: cover;
+}
+
+h1, h2, h3, h4 {
+    font-weight: bold;
+}
+
+form {
+    font-size: 14px;
+    font-weight: 500;
+    background: rgba(40, 43, 60, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    padding: 20px;
+}
+
+.btn,
+.form-control {
+    border-radius: 0;
+}
+
+#main-container {
+    color: white;
+    padding-top: 0;
+}
+
+#title {
+    text-align: center;
+    font-size: 50px;
+    text-shadow:
+            -1px -1px 0 #000,
+            1px -1px 0 #000,
+            -1px 1px 0 #000,
+            1px 1px 0 #000;
+}
+
+#back-home {
+    position: absolute;
+    margin: 25px 0 0 10px;
+    border-radius: 0;
+    z-index: 5;
+}
+
+.link--impt {
+    display: none;
+}
+
+.modebar--hover {
+    opacity:1 !important;
+}
+
+.modebar-btn--logo {
+    display: none !important;
+}
