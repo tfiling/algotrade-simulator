@@ -64,19 +64,13 @@ def loadStocks(includeWorld,num = -1):
 
         return stocks,USstocks
     return stocks,None
-#add index file TODO
-def getIndex(idxName):
-    return pn.read_csv(os.listdir("indexes/"+idxName +".csv"))
 
-#TODO
 def getStockIndex(idxName):
-    f = open('stockIdx/'+idxName+'.csv', 'rt')
-    try:
-        reader = csv.reader(f)
-        # for row in reader:
-        #     print row
-    finally:
-        f.close()
+    idxValue = pn.read_csv("stockIdx/" + idxName + ".csv", skiprows=[0, 1, 2], error_bad_lines=False, encoding="Windows-1255")
+    idxValue.columns = ['date', 'indexBasePrice', 'indexOpeningPrice', 'closingIndexValue', 'high', 'low', 'OverallMarketCap']
+    idxValue.fillna(idxValue.mean())  # fill nan value
+    return idxValue
+
 
 #pick n (numOfStocks) most higher value stocks
 def getIndexStocks(allStocks,numOfStocks,date):
@@ -218,3 +212,4 @@ def computeNewIndex(ILStocks, numOfStocks, weightLimit, USStocks=None):
 
 stocks,usStocks = loadStocks(False,50)
 print(computeNewIndex(stocks,40,0.07,usStocks))
+print(getStockIndex("TA-35"))
