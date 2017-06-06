@@ -129,7 +129,24 @@ def computeUsIndex(lastValueUS, i, USStocks):
     pass
 
 
+def tryReadFromMemory(param):
+    try:
+        ILstocksMMM = pn.read_csv("newIndexes/" + key + ".csv")
+        return ILstocksMMM
+    except:
+        return None
+
+
+def writeNewIndexToFile(key, newIdx):
+        newIdx.to_csv("newIndexes/" + key + ".csv")
+
+
+
 def computeNewIndex(ILStocks, numOfStocks, weightLimit, USStocks=None):
+    key = str(numOfStocks)+str(weightLimit)+str(USStocks)
+    readFile = tryReadFromMemory(key)
+    if(readFile != None): return readFile
+
     #filter empty data
     ILStocks = [x for x in ILStocks if not x.empty]
 
@@ -207,6 +224,8 @@ def computeNewIndex(ILStocks, numOfStocks, weightLimit, USStocks=None):
             newIdx.loc[newIdx['date'] == i, ["value"]] = lastValueUS*usfactor + lastValueIL*(1-usfactor)
         else:
             newIdx.loc[newIdx['date'] == i,["value"]] = lastValueIL
+
+    writeNewIndexToFile(key,newIdx)
     return newIdx
 
 
