@@ -89,7 +89,7 @@ def getStockIndex(idxName):
 def getIndexStocks(allStocks, numOfStocks, date):
     allStocks.sort(lambda stock1, stock2: biggerThan(stock1.loc[stock1['date'] == date],
                                                      stock2.loc[stock2['date'] == date]))
-    return allStocks[:numOfStocks]
+    return allStocks[:int(numOfStocks)]
 
 
 # sorting helper function
@@ -149,8 +149,34 @@ def computeUsIndex(lastValueUS, i, USStocks):
     pass
 
 
+
+def tryReadFromMemory(param):
+    try:
+        ILstocksMMM = pn.read_csv("newIndexes/" + key + ".csv")
+        return ILstocksMMM
+    except:
+        return None
+
+
+def writeNewIndexToFile(key, newIdx):
+        newIdx.to_csv("newIndexes/" + key + ".csv")
+
+
+
+
 def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50):
+
+    key = str(numOfStocks)+str(weightLimit)+str(withUS)+str(numOfStocksToLoad)
+    readFile = tryReadFromMemory(key)
+
+
+
+    if(readFile != None): return readFile
+
     ILStocks, USStocks = loadStocks(withUS, numOfStocksToLoad)
+
+
+
     # filter empty data
     ILStocks = [x for x in ILStocks if not x.empty]
 
@@ -169,8 +195,8 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
         for s in USStocks:
             s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
     idxStocks = []
-    lastValueIL = 1
-    lastValueUS = 1
+    lastValueIL = 1000
+    lastValueUS = 1000
     dayCounter = 0
     for i in newIdx['date']:
         # update indexes in the 1 of the month (or the start)
@@ -242,6 +268,8 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
         else:
             newIdx.loc[newIdx['date'] == i, ['value']] = lastValueIL
     newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
+
+    writeNewIndexToFile(key,newIdx)
     return newIdx
 
 

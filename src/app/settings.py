@@ -10,7 +10,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
-import MySQLdb
+#import MySQLdb
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
