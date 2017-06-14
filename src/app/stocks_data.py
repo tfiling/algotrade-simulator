@@ -165,7 +165,7 @@ def writeNewIndexToFile(key, newIdx):
 
 
 def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50):
-
+    last = None;
     key = str(numOfStocks)+str(weightLimit)+str(withUS)+str(numOfStocksToLoad)
     readFile = tryReadFromMemory(key)
     if(readFile is not None): return readFile
@@ -205,7 +205,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
             # pick the first n high value stocks
             # Take the current day from each stock in the new index
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
-            last = None;
+            
             if USStocks is not None:
                 USStocksDay = list(s.loc[s['date'] == i] for s in USStocks)
 
@@ -215,7 +215,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
                     USStocksDay = last
                 else:
                     last = USStocksDay
-                   
+
             # limit the run to 50 times
             for r in range(0, 50):
                 # sum of weights
