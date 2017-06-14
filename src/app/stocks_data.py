@@ -51,8 +51,9 @@ def loadStocks(includeWorld, num=-1):
     # add world stocks TODO
     if includeWorld:
         USstocks = []
-        for f in os.listdir('US_stocks'):
-            usStock = pn.read_csv('US_stocks/' + f, skiprows=[0, 1], error_bad_lines=False, encoding='Windows-1255')
+        for f in os.listdir(os.path.join(src_path, 'US_stocks')):
+            usStock = pn.read_csv(os.path.join(src_path, 'US_stocks/' + f),
+                                  skiprows=[0, 1], error_bad_lines=False, encoding='Windows-1255')
             usStock.fillna(usStock.mean())  # fill nan value
             usStock.columns = renameColumns
             usStock.IL_stocks = False
@@ -152,14 +153,14 @@ def computeUsIndex(lastValueUS, i, USStocks):
 
 def tryReadFromMemory(key):
     try:
-        ILstocksMMM = pn.read_csv("newIndexes/" + key + ".csv")
+        ILstocksMMM = pn.read_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
         return ILstocksMMM
     except ValueError as e:
         return None
 
 
 def writeNewIndexToFile(key, newIdx):
-        newIdx.to_csv("newIndexes/" + key + ".csv")
+        newIdx.to_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
 
 
 
@@ -168,9 +169,6 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
 
     key = str(numOfStocks)+str(weightLimit)+str(withUS)+str(numOfStocksToLoad)
     readFile = tryReadFromMemory(key)
-
-
-
     if(readFile is not None): return readFile
 
     ILStocks, USStocks = loadStocks(withUS, numOfStocksToLoad)
@@ -278,3 +276,6 @@ if __name__ == '__main__':
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
+
+# gal: probably yochai's sanity tests - the files doesnt always exists and there for an exception is throws
+# print(computeNewIndex(35, 0.07, True, numOfStocksToLoad=50))
