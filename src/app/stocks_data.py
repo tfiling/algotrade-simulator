@@ -205,15 +205,17 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
             # pick the first n high value stocks
             # Take the current day from each stock in the new index
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
+            last = None;
             if USStocks is not None:
                 USStocksDay = list(s.loc[s['date'] == i] for s in USStocks)
+
                 j = parsedDate - datetime.timedelta(days=2)
 
-                while USStocksDay[0].empty:  # skip weekends
-                    # print(i)
-                    # print(USStocks)
-                    j = j - datetime.timedelta(days=1)
-                    USStocksDay = list(s.loc[s['date'] == j] for s in USStocks)
+                if USStocksDay[0].empty:  # skip weekends
+                    USStocksDay = last
+                else:
+                    last = USStocksDay
+                   
             # limit the run to 50 times
             for r in range(0, 50):
                 # sum of weights
@@ -275,9 +277,4 @@ if __name__ == '__main__':
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
-<<<<<<< HEAD
-=======
 
-# gal: probably yochai's sanity tests - the files doesnt always exists and there for an exception is throws
-# print(computeNewIndex(35, 0.07, True, numOfStocksToLoad=50))
->>>>>>> 71394c7e547f27d42b469442c418a2f3fd13a8e3
