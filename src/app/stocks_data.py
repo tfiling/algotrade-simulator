@@ -150,11 +150,11 @@ def computeUsIndex(lastValueUS, i, USStocks):
 
 
 
-def tryReadFromMemory(param):
+def tryReadFromMemory(key):
     try:
         ILstocksMMM = pn.read_csv("newIndexes/" + key + ".csv")
         return ILstocksMMM
-    except:
+    except ValueError as e:
         return None
 
 
@@ -171,7 +171,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
 
 
 
-    if(readFile != None): return readFile
+    if(readFile is not None): return readFile
 
     ILStocks, USStocks = loadStocks(withUS, numOfStocksToLoad)
 
