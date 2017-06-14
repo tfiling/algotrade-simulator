@@ -155,7 +155,7 @@ def tryReadFromMemory(key):
     try:
         ILstocksMMM = pn.read_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
         return ILstocksMMM
-    except ValueError as e:
+    except Exception as e:
         return None
 
 
