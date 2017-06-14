@@ -2,501 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c31714da-ea20-4b5a-9e82-334e4c2cdcbf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ILstocksMMM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/simulator.sqlite3" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/media/stocks.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/1ADGAR INV.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ABILITY.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ADO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AFCON HOLD.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AFRICA PROERT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AFRICA RESIDENC.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AFRICA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AIRPORT CITY.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ALBAAD.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ALGOMIZER.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ALLOT COMMUNI.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ALONY HETZ.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ALROV PROPERT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AMANET.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AMOT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ANALYST.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ARAD.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ARAN.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ARKO HOLDINGS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ARYT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ASHTROM GROUP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ASHTROM PROP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ASPEN GROUP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ATREYU CAP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AUDIOCODES.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AVGOL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AZORIM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/AZRIELI GROUP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/B COMMUNICATION.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BABYLON.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BAYSIDE LAND.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BAZAN.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BET SHEMESH.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BEZEQ.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BIG.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BIOLINE RX.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BIOTIME.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BLUE SQ REAL ES.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BONUS BIOGROUP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BRACK CAPIT N V.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BRAINSWAY.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BRAM INDUS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BRAND.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/BRIMAG.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/CAMTEK.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/CAN FITE BIO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/CASTRO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/CELLCOM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/CERAGON.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/CLAL BIOTECH.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/CLAL INSURANCE.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/COHEN DEV.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/COMPUGEN.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/CYREN.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DANEL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DELEK AUTOMOTIV.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DELEK DRILL L.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DELEK GROUP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DELTA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DEXIA ISRAEL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DIMRI.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DIRECT INSURANC.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DISCOUNT INV.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DISCOUNT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DOR ALON.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/DUNIEC.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/E&amp;M.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/EL AL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ELBIT IMAGING.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ELBIT SYSTEMS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ELCO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ELECTRA CO  PR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ELECTRA REAL E.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ELECTRA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ELLOMAY.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ELRON.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ENERGIX.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ENLIGHT ENERGY.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/EQUITAL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/EVOGENE.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/FIBI BANK.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/FIBI HOLDINGS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/FMS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/FORESIGHT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/FORMULA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/FOX.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/FRUTAROM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/GAZIT GLOBE.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/GILAT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/GINEGAR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/GOLAN PLASTIC.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/GOLDEN HOUSE.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/GOLF.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/HADERA PAPER.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/HAGAG.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/HAMASHBIR 365.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/HAMAT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/HAMLET.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/HAREL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/HILAN.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/HLDS     L.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ICL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/IDI INSUR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/IES.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ILEX MEDICAL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/INDUS BUILDING.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/INROM CONST.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/INTEC PHARMA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/INTERNET GOLD.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ISRAEL CORP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ISRAMCO       L.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ISRAS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ISSTA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ITAMAR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/JERUSALEM ECON.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/JOEL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/KAFRIT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/KAMADA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/KENON.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/KERUR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/KITOV PHARMA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/KLIL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/KNAFAIM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/LAND DEV.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/LEUMI.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/LEVINSTEIN ENG.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/LEVINSTEIN PROP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/LIVEPERSON.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/LUDAN.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MAABAROT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MAGIC.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MALAM TEAM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MANNKIND.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MATOMY.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MATRIX.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MAYTRONICS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MAZOR ROBOTICS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MEDITR TOWER.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MEGA OR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MEITAV DS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MELISRON.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MENDELSON    IF.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MENORA MIV HLD.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MGURIT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MIGDAL INSUR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MINRAV      PRO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MINRAV.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MIRLAND.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MISHORIM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MIVTACH SHAMIR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MIZRAHI TEFAHOT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MY SIZE.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/MYLAN.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NANO DIMENSION.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NAPHTHA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NAVIDEA BIO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NAWI.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NETO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NICE.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NISSAN.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NORSTAR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NOVA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/NOVOLOG.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/O.R.T..csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ONE TECHNOLOG.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/OPKO HEALTH.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ORMAT TECHNO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/OVERSEAS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PALRAM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PARTNER.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PAZ OIL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PENINSULA GROUP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PERION NETWORK.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PERRIGO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PHOENIX.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PLASSON INDUS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PLURISTEM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/POALIM IBI.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/POALIM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/POINTER.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PRIORTECH.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PROPERT &amp; BUIL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/PROTALIX.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/RALCO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/RAM ON.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/RAMI LEVI.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/RATIO       L.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/RATIO PETROLE L.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/RAVAL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/REDHILL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/REIT 1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SAPIENS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SCHNAPP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SCOPE.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SELLA REAL EST.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SHALAG.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SHANIV.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SHAPIR      ENG.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SHIKUN &amp; BINUI.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SHUFERSAL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SKYLINE.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SODASTREAM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SOMOTO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SPACE COM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SPUNTECH.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/STRAUSS GROUP.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SUMMIT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/SYNEL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/TADIRAN HOLDING.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/TALDOR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/TAT TECHNO.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/TELSYS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/TEVA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/TIV TAAM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/TOWER.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/UNION.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/UNITRONICS.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/VICTORY.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/VILLAR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/VITANIA.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/WILLY FOOD.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/IL_stocks/ZUR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/US_stocks/APPL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/US_stocks/FB.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/US_stocks/GOOGL.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/US_stocks/LHA GR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/US_stocks/MSFT.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/US_stocks/NESN VX.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/US_stocks/VOW GR.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/US_stocks/XOM.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/forms.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/graph_creator.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/settings.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/stocks_data.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/urls.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/views.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/app/wsgi.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/manage.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/newindex_15_1.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/stockIdx/TA-125.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/stockIdx/TA-35.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/stockIdx/TA-90.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/bootstrap.min.css.map" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/custom.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/css/font-awesome.min.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/bootstrap.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/js/jquery.min.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/templates/base.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/templates/index.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/1ADGAR INV.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ABILITY.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ADO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AFCON HOLD.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AFRICA PROERT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AFRICA RESIDENC.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AFRICA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AIRPORT CITY.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ALBAAD.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ALGOMIZER.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ALLOT COMMUNI.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ALONY HETZ.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ALROV PROPERT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AMANET.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AMOT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ANALYST.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ARAD.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ARAN.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ARKO HOLDINGS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ARYT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ASHTROM GROUP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ASHTROM PROP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ASPEN GROUP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ATREYU CAP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AUDIOCODES.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AVGOL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AZORIM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/AZRIELI GROUP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/B COMMUNICATION.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BABYLON.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BAYSIDE LAND.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BAZAN.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BET SHEMESH.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BEZEQ.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BIG.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BIOLINE RX.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BIOTIME.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BLUE SQ REAL ES.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BONUS BIOGROUP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BRACK CAPIT N V.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BRAINSWAY.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BRAM INDUS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BRAND.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/BRIMAG.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/CAMTEK.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/CAN FITE BIO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/CASTRO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/CELLCOM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/CERAGON.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/CLAL BIOTECH.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/CLAL INSURANCE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/COHEN DEV.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/COMPUGEN.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/CYREN.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DANEL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DELEK AUTOMOTIV.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DELEK DRILL L.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DELEK GROUP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DELTA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DEXIA ISRAEL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DIMRI.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DIRECT INSURANC.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DISCOUNT INV.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DISCOUNT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DOR ALON.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/DUNIEC.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/E&amp;M.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/EL AL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ELBIT IMAGING.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ELBIT SYSTEMS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ELCO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ELECTRA CO  PR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ELECTRA REAL E.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ELECTRA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ELLOMAY.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ELRON.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ENERGIX.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ENLIGHT ENERGY.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/EQUITAL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/EVOGENE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/FIBI BANK.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/FIBI HOLDINGS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/FMS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/FORESIGHT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/FORMULA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/FOX.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/FRUTAROM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/GAZIT GLOBE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/GILAT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/GINEGAR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/GOLAN PLASTIC.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/GOLDEN HOUSE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/GOLF.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/HADERA PAPER.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/HAGAG.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/HAMASHBIR 365.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/HAMAT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/HAMLET.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/HAREL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/HILAN.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/HLDS     L.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ICL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/IDI INSUR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/IES.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ILEX MEDICAL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/INDUS BUILDING.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/INROM CONST.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/INTEC PHARMA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/INTERNET GOLD.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ISRAEL CORP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ISRAMCO       L.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ISRAS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ISSTA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ITAMAR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/JERUSALEM ECON.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/JOEL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/KAFRIT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/KAMADA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/KENON.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/KERUR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/KITOV PHARMA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/KLIL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/KNAFAIM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/LAND DEV.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/LEUMI.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/LEVINSTEIN ENG.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/LEVINSTEIN PROP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/LIVEPERSON.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/LUDAN.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MAABAROT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MAGIC.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MALAM TEAM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MANNKIND.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MATOMY.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MATRIX.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MAYTRONICS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MAZOR ROBOTICS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MEDITR TOWER.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MEGA OR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MEITAV DS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MELISRON.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MENDELSON    IF.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MENORA MIV HLD.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MGURIT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MIGDAL INSUR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MINRAV      PRO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MINRAV.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MIRLAND.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MISHORIM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MIVTACH SHAMIR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MIZRAHI TEFAHOT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MY SIZE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/MYLAN.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NANO DIMENSION.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NAPHTHA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NAVIDEA BIO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NAWI.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NETO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NICE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NISSAN.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NORSTAR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NOVA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/NOVOLOG.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/O.R.T..csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ONE TECHNOLOG.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/OPKO HEALTH.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ORMAT TECHNO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/OVERSEAS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PALRAM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PARTNER.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PAZ OIL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PENINSULA GROUP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PERION NETWORK.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PERRIGO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PHOENIX.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PLASSON INDUS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PLURISTEM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/POALIM IBI.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/POALIM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/POINTER.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PRIORTECH.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PROPERT &amp; BUIL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/PROTALIX.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/RALCO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/RAM ON.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/RAMI LEVI.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/RATIO       L.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/RATIO PETROLE L.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/RAVAL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/REDHILL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/REIT 1.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SAPIENS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SCHNAPP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SCOPE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SELLA REAL EST.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SHALAG.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SHANIV.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SHAPIR      ENG.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SHIKUN &amp; BINUI.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SHUFERSAL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SKYLINE.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SODASTREAM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SOMOTO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SPACE COM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SPUNTECH.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/STRAUSS GROUP.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SUMMIT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/SYNEL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/TADIRAN HOLDING.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/TALDOR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/TAT TECHNO.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/TELSYS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/TEVA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/TIV TAAM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/TOWER.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/UNION.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/UNITRONICS.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/VICTORY.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/VILLAR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/VITANIA.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/WILLY FOOD.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/IL_stocks/ZUR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/ILstocksMMM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/README.md" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/US_stocks/APPL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/US_stocks/FB.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/US_stocks/GOOGL.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/US_stocks/LHA GR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/US_stocks/MSFT.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/US_stocks/NESN VX.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/US_stocks/VOW GR.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/US_stocks/XOM.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/getStocksData.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stockIdx/TA-125.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stockIdx/TA-35.csv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/stockIdx/TA-90.csv" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/algotrading.iml" afterPath="$PROJECT_DIR$/.idea/algotrading.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/forms.py" afterPath="$PROJECT_DIR$/src/app/forms.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/views.py" afterPath="$PROJECT_DIR$/src/app/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/css/custom.css" afterPath="$PROJECT_DIR$/static/css/custom.css" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -522,10 +31,22 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+            <state relative-caret-position="176">
+              <caret line="17" column="90" selection-start-line="17" selection-start-column="90" selection-end-line="17" selection-end-column="90" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="forms.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/app/forms.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -562,6 +83,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/getStocksData.py" />
+        <option value="$PROJECT_DIR$/static/css/custom.css" />
+        <option value="$PROJECT_DIR$/src/app/forms.py" />
         <option value="$PROJECT_DIR$/src/app/views.py" />
       </list>
     </option>
@@ -603,13 +126,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="algotrade-simulator" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algotrade-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algotrade-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -636,7 +168,43 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algotrade-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algotrade-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algotrade-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="algotrade-simulator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newIndexes" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -661,6 +229,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -815,6 +384,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -938,8 +513,8 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
-        <env name="DJANGO_SETTINGS_MODULE" value="app.settings" />
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="app.settings" />
       </envs>
       <option name="SDK_HOME" value="/usr/local/bin/python2.7" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -959,8 +534,8 @@
       <method />
     </configuration>
     <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Python.stocks_data" />
-      <item index="1" class="java.lang.String" itemvalue="Django server.Simulator" />
+      <item index="0" class="java.lang.String" itemvalue="Django server.Simulator" />
+      <item index="1" class="java.lang.String" itemvalue="Python.stocks_data" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -982,6 +557,14 @@
       <option name="presentableId" value="Default" />
       <updated>1494665420227</updated>
     </task>
+    <task id="LOCAL-00001" summary="integration">
+      <created>1496702742846</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1496702742847</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TodoView">
@@ -997,13 +580,14 @@
     <frame x="67" y="24" width="1299" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.264166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27853152" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3287037" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41049382" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32964602" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1018,8 +602,20 @@
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="integration" />
+    <option name="LAST_COMMIT_MESSAGE" value="integration" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1035,66 +631,54 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/getStocksData.py">
+    <entry file="file://$PROJECT_DIR$/src/app/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getStocksData.py" />
     <entry file="file://$APPLICATION_HOME_DIR$/helpers/pydev/pydevd.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27018">
           <caret line="1536" column="0" selection-start-line="1536" selection-start-column="0" selection-end-line="1536" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getStocksData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getStocksData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getStocksData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/getStocksData.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/getStocksData.py" />
+    <entry file="file://$PROJECT_DIR$/getStocksData.py" />
+    <entry file="file://$PROJECT_DIR$/getStocksData.py" />
+    <entry file="file://$PROJECT_DIR$/getStocksData.py" />
     <entry file="file://$PROJECT_DIR$/IL_stocks/Data_20170529.csv" />
     <entry file="file://C:/Python27/Lib/site-packages/pandas/io/parsers.py" />
     <entry file="file://C:/Python27/Lib/site-packages/pandas/io/common.py" />
     <entry file="file://C:/Python27/Lib/encodings/utf_8.py" />
     <entry file="file://$PROJECT_DIR$/IL_stocks/Data_20170529 (1).csv" />
-    <entry file="file://$PROJECT_DIR$/ILstocksMMM.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/ILstocksMMM.csv" />
     <entry file="file://C:/Python27/Lib/site-packages/pandas/core/frame.py" />
     <entry file="file://C:/Python27/Lib/site-packages/pandas/core/generic.py" />
     <entry file="file://C:/Python27/Lib/site-packages/pandas/core/series.py" />
@@ -1105,22 +689,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="496">
           <caret line="1536" column="0" selection-start-line="1536" selection-start-column="0" selection-end-line="1536" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/getStocksData.py" />
+    <entry file="file://$PROJECT_DIR$/static/css/custom.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="19">
+          <caret line="47" column="1" selection-start-line="47" selection-start-column="1" selection-end-line="47" selection-end-column="1" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/getStocksData.py">
+    <entry file="file://$PROJECT_DIR$/src/app/forms.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="83">
-          <caret line="141" column="45" selection-start-line="141" selection-start-column="45" selection-end-line="141" selection-end-column="45" />
+        <state relative-caret-position="140">
+          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/stocks_data.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/app/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="14" column="90" selection-start-line="14" selection-start-column="90" selection-end-line="14" selection-end-column="90" />
+        <state relative-caret-position="176">
+          <caret line="17" column="90" selection-start-line="17" selection-start-column="90" selection-end-line="17" selection-end-column="90" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
           </folding>
