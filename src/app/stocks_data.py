@@ -156,7 +156,7 @@ def tryReadFromMemory(key):
     try:
         ILstocksMMM = pn.read_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
         return ILstocksMMM
-    except:
+    except Exception as e:
         return None
 
 
@@ -275,3 +275,9 @@ if __name__ == '__main__':
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
+<<<<<<< HEAD
+=======
+
+# gal: probably yochai's sanity tests - the files doesnt always exists and there for an exception is throws
+# print(computeNewIndex(35, 0.07, True, numOfStocksToLoad=50))
+>>>>>>> 71394c7e547f27d42b469442c418a2f3fd13a8e3
