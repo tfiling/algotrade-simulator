@@ -133,7 +133,8 @@ def computeIndex(IYesterday, stocks):
 
 
 def computeIndexUS(iyesterday, stocks):
-    return iyesterday * sum([s.wightForFactorCheak.values[0] * s.closeValueNormlize.values[0] / s.baseValue.values[0] for s in stocks])
+    #print(stocks)
+    return iyesterday * sum([s.wightForFactorCheak.values[0] * s.closeValueNormlize.values[0] / s.baseValue.values[0] for s in stocks if not s.empty])
 
 
 # TODO?
@@ -161,8 +162,6 @@ def tryReadFromMemory(key):
 
 def writeNewIndexToFile(key, newIdx):
         newIdx.to_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
-
-
 
 
 def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50):
@@ -272,10 +271,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
 
 
 if __name__ == '__main__':
-    df = computeNewIndex(numOfStocks=40, weightLimit=0.07, numOfStocksToLoad=50)
+    df = computeNewIndex(numOfStocks=40, weightLimit=0.07,withUS=True, numOfStocksToLoad=50)
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
-
-
-print(computeNewIndex(35, 0.07, True, numOfStocksToLoad=50))
