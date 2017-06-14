@@ -205,7 +205,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
             # pick the first n high value stocks
             # Take the current day from each stock in the new index
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
-            
+
             if USStocks is not None:
                 USStocksDay = list(s.loc[s['date'] == i] for s in USStocks)
 
