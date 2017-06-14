@@ -150,7 +150,7 @@ def computeUsIndex(lastValueUS, i, USStocks):
 
 
 
-def tryReadFromMemory(param):
+def tryReadFromMemory(key):
     try:
         ILstocksMMM = pn.read_csv("newIndexes/" + key + ".csv")
         return ILstocksMMM
@@ -168,9 +168,6 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
 
     key = str(numOfStocks)+str(weightLimit)+str(withUS)+str(numOfStocksToLoad)
     readFile = tryReadFromMemory(key)
-
-
-
     if(readFile != None): return readFile
 
     ILStocks, USStocks = loadStocks(withUS, numOfStocksToLoad)
@@ -278,3 +275,6 @@ if __name__ == '__main__':
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
+
+
+print(computeNewIndex(35, 0.07, True, numOfStocksToLoad=50))
