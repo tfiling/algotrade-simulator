@@ -61,7 +61,7 @@ def loadStocks(includeWorld, num=-1):
             usStock.FFMCapi = 0.015
             usStock['closeValueNormlize'] = [x * 100 for x in usStock['closeValueNormlize']]  # ils to agorot
             usStock['marketCapital'] = [x * 1000 for x in usStock['marketCapital']]  # ils to 1000ILS
-            usStock['wightForFactorCheak'] = US_PRECENTAGE
+            usStock['wightForFactorCheak'] = pn.Series([US_PRECENTAGE for x in usStock['marketCapital']])
             usStock['date'] = pn.to_datetime(usStock['date'], dayfirst=True)
             usStock['date'].fillna(method='pad', inplace=True)
             usStock['date'] = [x.strftime('%d/%m/%Y') for x in usStock['date']]
@@ -188,12 +188,10 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
         s['publicHoldingsWorth'] = pn.Series(1, index=newIdx.index)  # initalize limit factor
     for s in ILStocks:
         s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
-    if USStocks is not None:
-        for s in USStocks:
-            s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
+
     idxStocks = []
-    lastValueIL = 1000
-    lastValueUS = 1000
+    lastValueIL = 1
+    lastValueUS = 1
     dayCounter = 0
     for i in newIdx['date']:
         # update indexes in the 1 of the month (or the start)
@@ -258,22 +256,27 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
         # compute date i value
 
         lastValueIL = computeIndex(lastValueIL, idxStocksDay)
-        print str(i) + '#' + str(lastValueIL)
+
         if USStocks is not None:
             lastValueUS = computeIndexUS(lastValueUS, USStocksDay)
+            print "US:" + str(i) + '#' + str(lastValueUS)
             # mix both indexes
             usfactor = US_PRECENTAGE * len(USStocksDay)
-            newIdx.loc[newIdx['date'] == i, ['value']] = lastValueUS * usfactor + lastValueIL * (1 - usfactor)
+            value = lastValueUS + lastValueIL * (1 - usfactor)
+            newIdx.loc[newIdx['date'] == i,'value'] = value
         else:
-            newIdx.loc[newIdx['date'] == i, ['value']] = lastValueIL
-    newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
+            newIdx.loc[str(newIdx['date']) == i,'value']= lastValueIL
+            print str(i) + '#' + str(lastValueIL)
+
+
+    newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%d-%m-%Y'))
 
     writeNewIndexToFile(key,newIdx)
     return newIdx
 
 
 if __name__ == '__main__':
-    df = computeNewIndex(numOfStocks=40, weightLimit=0.07,withUS=True, numOfStocksToLoad=50)
+    df = computeNewIndex(numOfStocks=25, weightLimit=0.07,withUS=False)
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
