@@ -54,3 +54,8 @@ form {
 .modebar-btn--logo {
     display: none !important;
 }
+
+.radio {
+    display: inline-block !important;
+    margin-right: 30px;
+}
