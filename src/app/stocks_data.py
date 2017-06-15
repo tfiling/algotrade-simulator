@@ -191,8 +191,8 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
         s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
 
     idxStocks = []
-    lastValueIL = 1
-    lastValueUS = 1
+    lastValueIL = 1000
+    lastValueUS = 1000
     dayCounter = 0
     for i in newIdx['date']:
         # update indexes in the 1 of the month (or the start)
@@ -271,14 +271,14 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
             print str(i) + '#' + str(lastValueIL)
 
 
-    newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%d-%m-%Y'))
+    newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
 
     writeNewIndexToFile(key,newIdx)
     return newIdx
 
 
 if __name__ == '__main__':
-    df = computeNewIndex(numOfStocks=25, weightLimit=0.07,withUS=False)
+    df = computeNewIndex(numOfStocks=30, weightLimit=0.07,withUS=False)
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
