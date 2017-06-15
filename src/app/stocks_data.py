@@ -265,7 +265,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
             value = lastValueUS + lastValueIL * (1 - usfactor)
             newIdx.loc[newIdx['date'] == i,'value'] = value
         else:
-            newIdx.loc[str(newIdx['date']) == i,'value']= lastValueIL
+            newIdx.loc[newIdx['date'] == i, 'value'] = lastValueIL
             print str(i) + '#' + str(lastValueIL)
 
 
