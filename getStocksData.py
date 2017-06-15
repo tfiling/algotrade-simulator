@@ -228,7 +228,3 @@ def computeNewIndex(ILStocks, numOfStocks, weightLimit, USStocks=None):
     writeNewIndexToFile(key,newIdx)
     return newIdx
 
-
-stocks,usStocks = loadStocks(False,50)
-print(computeNewIndex(stocks,40,0.07,usStocks))
-print(getStockIndex("TA-35"))

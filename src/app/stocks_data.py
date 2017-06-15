@@ -129,7 +129,9 @@ def computeStockWeight(stock, sum_i):  # Q*F*f*P/sum(i)(#Q*F*f*P)
 
 # compute Index value by using yesterday's index value - see referents in the pdf file from ofer
 def computeIndex(IYesterday, stocks):
-    return IYesterday * sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
+    sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
+    print(sumStocks)
+    return IYesterday * sumStocks
 
 
 def computeIndexUS(iyesterday, stocks):
@@ -137,7 +139,6 @@ def computeIndexUS(iyesterday, stocks):
     return iyesterday * sum([s.wightForFactorCheak.values[0] * s.closeValueNormlize.values[0] / s.baseValue.values[0] for s in stocks if not s.empty])
 
 
-# TODO?
 def mixTwoindexes(idx1, idx2, precent1, precent2):
     if precent1 + precent2 != 100:
         raise ValueError('AThe sum of the precentage should be 100')
@@ -164,7 +165,7 @@ def writeNewIndexToFile(key, newIdx):
         newIdx.to_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
 
 
-def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50):
+def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1):
     last = None;
     key = str(numOfStocks)+str(weightLimit)+str(withUS)+str(numOfStocksToLoad)
     readFile = tryReadFromMemory(key)
@@ -248,7 +249,8 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=50
                 if not [s for s in idxStocksDay if s.wightForFactorCheak.values[0] > weightLimit and
                         not np.isclose(s.wightForFactorCheak.values[0], weightLimit)]:
                     break  # loop until this happend
-
+        else:
+            idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
         # weight for each stock
         sumWight = sum([computeFFMCap(s) for s in idxStocksDay])
         for s in idxStocksDay:
