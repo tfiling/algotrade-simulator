@@ -135,8 +135,8 @@ def computeIndex(IYesterday, stocks):
 
 
 def computeIndexUS(iyesterday, stocks):
-    #print(stocks)
-    return iyesterday * sum([s.wightForFactorCheak.values[0] * s.closeValueNormlize.values[0] / s.baseValue.values[0] for s in stocks if not s.empty])
+
+    return iyesterday * sum([s.closeValueNormlize.values[0] / (s.baseValue.values[0]*len([a for a in stocks if not a.empty])) for s in stocks if not s.empty])
 
 
 def mixTwoindexes(idx1, idx2, precent1, precent2):
@@ -198,6 +198,18 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
         # update indexes in the 1 of the month (or the start)
         dayCounter += 1
         parsedDate = parse(i, dayfirst=True)
+
+        if USStocks is not None:
+            USStocksDay = list(s.loc[s['date'] == i] for s in USStocks)
+
+            j = parsedDate - datetime.timedelta(days=2)
+
+            if USStocksDay[0].empty:  # skip weekends
+                USStocksDay = last
+            else:
+                last = USStocksDay
+
+
         if idxStocks == [] or (1 <= parsedDate.day <= 10 and dayCounter > 25):
             dayCounter = 0
             idxStocks = getIndexStocks(ILStocks, numOfStocks, i)
@@ -205,15 +217,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
             # Take the current day from each stock in the new index
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
 
-            if USStocks is not None:
-                USStocksDay = list(s.loc[s['date'] == i] for s in USStocks)
 
-                j = parsedDate - datetime.timedelta(days=2)
-
-                if USStocksDay[0].empty:  # skip weekends
-                    USStocksDay = last
-                else:
-                    last = USStocksDay
 
             # limit the run to 50 times
             for r in range(0, 50):
@@ -249,8 +253,14 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
                 if not [s for s in idxStocksDay if s.wightForFactorCheak.values[0] > weightLimit and
                         not np.isclose(s.wightForFactorCheak.values[0], weightLimit)]:
                     break  # loop until this happend
+                lastWightForFactorCheak = [s['wightForFactorCheak'] for s in idxStocksDay]
         else:
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
+
+            for index,x in  enumerate(idxStocksDay) : idxStocksDay[index]['wightForFactorCheak'] = lastWightForFactorCheak[index]
+
+        if(str(i) == "29/04/2013"):
+            a = 6
         # weight for each stock
         sumWight = sum([computeFFMCap(s) for s in idxStocksDay])
         for s in idxStocksDay:
@@ -264,7 +274,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
             print "US:" + str(i) + '#' + str(lastValueUS)
             # mix both indexes
             usfactor = US_PRECENTAGE * len(USStocksDay)
-            value = lastValueUS + lastValueIL * (1 - usfactor)
+            value = lastValueUS*usfactor + lastValueIL * (1 - usfactor)
             newIdx.loc[newIdx['date'] == i,'value'] = value
         else:
             newIdx.loc[newIdx['date'] == i, 'value'] = lastValueIL
@@ -278,7 +288,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
 
 
 if __name__ == '__main__':
-    df = computeNewIndex(numOfStocks=30, weightLimit=0.07,withUS=False)
+    df = computeNewIndex(numOfStocks=35, weightLimit=0.07,withUS=True)
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
