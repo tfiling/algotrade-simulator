@@ -187,7 +187,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
         s['publicHoldingsWorth'] = pn.Series(1, index=newIdx.index)  # initalize limit factor
     for s in ILStocks:
         s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
-    startValue =   startValue = real_index.loc[0]['indexBasePrice']
+    startValue =   startValue = real_index.loc[real_index.shape[0]-1]['indexBasePrice']
     idxStocks = []
     lastValueIL = startValue
     lastValueUS = startValue
