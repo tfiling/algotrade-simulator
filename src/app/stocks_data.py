@@ -129,6 +129,8 @@ def computeStockWeight(stock, sum_i):  # Q*F*f*P/sum(i)(#Q*F*f*P)
 
 # compute Index value by using yesterday's index value - see referents in the pdf file from ofer
 def computeIndex(IYesterday, stocks):
+#    print [str(s.wightForFactorCheak.values[0])+"%"+str(s.closeValueAG.values[0])+"*"+str(s.baseValue.values[0]) for s in stocks]
+
     sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
     print(sumStocks)
     return IYesterday * sumStocks
@@ -147,10 +149,6 @@ def mixTwoindexes(idx1, idx2, precent1, precent2):
     return (idx1 * precent1 / 100) + (idx2 * precent2 / 100)
 
 
-# main function, returns new index (pandas DataFrame)
-def computeUsIndex(lastValueUS, i, USStocks):
-    pass
-
 
 
 def tryReadFromMemory(key):
@@ -165,7 +163,7 @@ def writeNewIndexToFile(key, newIdx):
         newIdx.to_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
 
 
-def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1):
+def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1,real_index=None):
     last = None;
     key = str(numOfStocks)+str(weightLimit)+str(withUS)+str(numOfStocksToLoad)
     readFile = tryReadFromMemory(key)
@@ -189,10 +187,10 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
         s['publicHoldingsWorth'] = pn.Series(1, index=newIdx.index)  # initalize limit factor
     for s in ILStocks:
         s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
-
+    startValue =   startValue = real_index.loc[0]['indexBasePrice']
     idxStocks = []
-    lastValueIL = 1000
-    lastValueUS = 1000
+    lastValueIL = startValue
+    lastValueUS = startValue
     dayCounter = 0
     for i in newIdx['date']:
         # update indexes in the 1 of the month (or the start)
@@ -211,8 +209,10 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
 
 
         if idxStocks == [] or (1 <= parsedDate.day <= 10 and dayCounter > 25):
+
             dayCounter = 0
             idxStocks = getIndexStocks(ILStocks, numOfStocks, i)
+            #for t in idxStocks: print t.stockID
             # pick the first n high value stocks
             # Take the current day from each stock in the new index
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
@@ -288,7 +288,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
 
 
 if __name__ == '__main__':
-    df = computeNewIndex(numOfStocks=35, weightLimit=0.07,withUS=True)
+    df = computeNewIndex(numOfStocks=35, weightLimit=0.07,withUS=False,real_index=getStockIndex("TA-35"))
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
