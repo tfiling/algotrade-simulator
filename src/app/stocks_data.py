@@ -288,7 +288,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
 
 
 if __name__ == '__main__':
-    df = computeNewIndex(numOfStocks=35, weightLimit=0.07,withUS=False,real_index=getStockIndex("TA-35"))
+    df = computeNewIndex(numOfStocks=35, weightLimit=0.07,withUS=True,real_index=getStockIndex("TA-35"))
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
