@@ -11,6 +11,11 @@ data = {}
 YEARS = 5
 US_PRECENTAGE = 0.015
 DaysInYear = 365
+chartChangesList = []   # will contain all of the changes in the simulated chart value
+daysCounter = 0         # counting the amount of days the chart was calculated
+sharpeRatio = None
+standardDeviation = None
+
 
 # תאריך,שער נעילה מתואם,שער נעילה (באגורות) ,שינוי(%),שער פתיחה,שער בסיס,שער גבוה,שער נמוך,הון רשום למסחר,
 # שווי שוק (אלפי ש'ח),מחזור מסחר(ש'ח),מחזור ביחידות,מספר עסקאות,סוג האקס *,מקדם אקס,ממ'מ,אחוז החזקות הציבור למדד
@@ -25,6 +30,19 @@ def getStockID(file_name):
         content = f.readline()
         stock_id = content.split('-')[2].strip()
     return stock_id
+
+def calculateStandardDeviation():
+    average = np.average(chartChangesList)
+    print("average:")
+    print(average)
+    standardDeviation = np.std(chartChangesList)
+    print("std:")
+    print(standardDeviation)
+    sharpeRatio = average / standardDeviation
+    print("sharpe ratio:")
+    print(sharpeRatio)
+
+
 
 
 # load stocks from csv files
@@ -133,6 +151,7 @@ def computeIndex(IYesterday, stocks):
 
     sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
     print(sumStocks)
+    chartChangesList.append(sumStocks)
     return IYesterday * sumStocks
 
 
@@ -192,9 +211,15 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
     lastValueIL = startValue
     lastValueUS = startValue
     dayCounter = 0
+    stopCounter = 0
     for i in newIdx['date']:
         # update indexes in the 1 of the month (or the start)
         dayCounter += 1
+        stopCounter += 1
+        #stop calc for testing TODO remove
+        if (stopCounter > 20) :
+            break
+            #########
         parsedDate = parse(i, dayfirst=True)
 
         if USStocks is not None:
@@ -280,11 +305,11 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
             newIdx.loc[newIdx['date'] == i, 'value'] = lastValueIL
             print str(i) + '#' + str(lastValueIL)
 
-
+    calculateStandardDeviation()
     newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
 
-    writeNewIndexToFile(key,newIdx)
-    return newIdx
+    # writeNewIndexToFile(key,newIdx)
+    return (newIdx, sharpeRatio, standardDeviation)
 
 
 if __name__ == '__main__':
