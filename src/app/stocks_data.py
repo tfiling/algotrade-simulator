@@ -5,6 +5,7 @@ import pandas as pn
 import os
 from dateutil.parser import parse
 import datetime
+import pickle
 
 src_path = os.path.dirname(os.path.dirname(__file__))
 data = {}
@@ -30,16 +31,9 @@ def getStockID(file_name):
     return stock_id
 
 def calculateStandardDeviation():
-    print(chartChangesList)
     averageProfit = np.average(chartChangesList)
     standardDeviation = np.std(chartChangesList)
     sharpeRatio = averageProfit / standardDeviation
-    print("average:")
-    print(averageProfit)
-    print("std:")
-    print(standardDeviation)
-    print("sharpe ratio:")
-    print(sharpeRatio)
     return(averageProfit, standardDeviation, sharpeRatio)
 
 
@@ -176,16 +170,41 @@ def tryReadFromMemory(key):
     except Exception as e:
         return None
 
+def tryReadStatisticsFromMemory(key):
+    filePath = os.path.join(src_path, 'newIndexes/' + key + "Statistics")
+    try:
+        with open( filePath + '.pkl', 'rb') as file:
+            statisticsDict = pickle.load(file)
+            return (statisticsDict["sharpeRatio"], statisticsDict["standardDeviation"], statisticsDict["averageProfit"])
+    except Exception as e:
+        print(e)
+        return (None, None, None)
+
 
 def writeNewIndexToFile(key, newIdx):
         newIdx.to_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
 
+def writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit):
+    try:
+        if (sharpeRatio is not None and standardDeviation is not None and averageProfit is not None):
+            filePath = os.path.join(src_path, 'newIndexes/' + key + "Statistics")
+            statisticsDict = {"sharpeRatio" : sharpeRatio, "standardDeviation" : standardDeviation , "averageProfit" : averageProfit}
+            with open(filePath + '.pkl', 'wb') as file:
+                pickle.dump(statisticsDict, file, pickle.HIGHEST_PROTOCOL)
+    except Exception as e:
+        print(e)
+
 
 def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1,real_index=None):
     last = None;
+    sharpeRatio = None;
+    standardDeviation = None;
+    averageProfit = None;
     key = str(numOfStocks)+str(weightLimit)+str(withUS)+str(numOfStocksToLoad)
     readFile = tryReadFromMemory(key)
-    if(readFile is not None): return readFile
+    (sharpeRatio, standardDeviation, averageProfit) = tryReadStatisticsFromMemory(key)
+    if(readFile is not None) and (sharpeRatio is not None) and (standardDeviation is not None) and (averageProfit is not None):
+        return (readFile, sharpeRatio, standardDeviation, averageProfit)
 
     ILStocks, USStocks = loadStocks(withUS, numOfStocksToLoad)
 
@@ -216,8 +235,8 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
         dayCounter += 1
         stopCounter += 1
         #stop calc for testing TODO remove
-        if (stopCounter > 10) :
-            break
+        # if (stopCounter > 20) :
+        #     break
             #########
         parsedDate = parse(i, dayfirst=True)
 
@@ -305,16 +324,10 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
             print str(i) + '#' + str(lastValueIL)
 
     (averageProfit, standardDeviation, sharpeRatio) = calculateStandardDeviation()
-    print("==========")
-    print("average:")
-    print(averageProfit)
-    print("std:")
-    print(standardDeviation)
-    print("sharpe ratio:")
-    print(sharpeRatio)
     newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
 
-    # writeNewIndexToFile(key,newIdx)
+    writeNewIndexToFile(key,newIdx)
+    writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit)
     return (newIdx, sharpeRatio, standardDeviation, averageProfit)
 
 
