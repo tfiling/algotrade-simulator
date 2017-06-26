@@ -13,8 +13,6 @@ US_PRECENTAGE = 0.015
 DaysInYear = 365
 chartChangesList = []   # will contain all of the changes in the simulated chart value
 daysCounter = 0         # counting the amount of days the chart was calculated
-sharpeRatio = None
-standardDeviation = None
 
 
 # תאריך,שער נעילה מתואם,שער נעילה (באגורות) ,שינוי(%),שער פתיחה,שער בסיס,שער גבוה,שער נמוך,הון רשום למסחר,
@@ -32,16 +30,17 @@ def getStockID(file_name):
     return stock_id
 
 def calculateStandardDeviation():
-    average = np.average(chartChangesList)
-    print("average:")
-    print(average)
+    print(chartChangesList)
+    averageProfit = np.average(chartChangesList)
     standardDeviation = np.std(chartChangesList)
+    sharpeRatio = averageProfit / standardDeviation
+    print("average:")
+    print(averageProfit)
     print("std:")
     print(standardDeviation)
-    sharpeRatio = average / standardDeviation
     print("sharpe ratio:")
     print(sharpeRatio)
-
+    return(averageProfit, standardDeviation, sharpeRatio)
 
 
 
@@ -217,7 +216,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
         dayCounter += 1
         stopCounter += 1
         #stop calc for testing TODO remove
-        if (stopCounter > 20) :
+        if (stopCounter > 10) :
             break
             #########
         parsedDate = parse(i, dayfirst=True)
@@ -305,11 +304,18 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
             newIdx.loc[newIdx['date'] == i, 'value'] = lastValueIL
             print str(i) + '#' + str(lastValueIL)
 
-    calculateStandardDeviation()
+    (averageProfit, standardDeviation, sharpeRatio) = calculateStandardDeviation()
+    print("==========")
+    print("average:")
+    print(averageProfit)
+    print("std:")
+    print(standardDeviation)
+    print("sharpe ratio:")
+    print(sharpeRatio)
     newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
 
     # writeNewIndexToFile(key,newIdx)
-    return (newIdx, sharpeRatio, standardDeviation)
+    return (newIdx, sharpeRatio, standardDeviation, averageProfit)
 
 
 if __name__ == '__main__':

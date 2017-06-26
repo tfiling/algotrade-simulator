@@ -2,7 +2,7 @@ import plotly.graph_objs as go
 import plotly.offline
 
 
-def create_graph(simulated_index, real_index=None):
+def create_graph(simulated_index, real_index=None, sharpeRatio = None, standardDeviation=None, averageReturn=None):
     """
     :param simulated_index: dataframe with simulated index data
     :param real_index: dataframe with real index data
@@ -16,6 +16,14 @@ def create_graph(simulated_index, real_index=None):
         real = go.Scatter(x=real_index.date, y=real_index.value,
                           name='Real index', line=dict(color='#7F7F7F'), opacity=0.8)
         data.append(real)
+
+    print("=======")
+    print("std:")
+    print(standardDeviation)
+    print("sharpe ratio:")
+    print(sharpeRatio)
+    print("averageReturn:")
+    print(averageReturn)
 
     layout = dict(
         title='Simulated index VS. Real index',
