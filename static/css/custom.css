@@ -43,6 +43,15 @@ form {
     z-index: 5;
 }
 
+#stats {
+    display: block;
+    float: right;
+    color: rgb(68, 68, 68);
+    margin-top: 180px;
+    font-size: 14px;
+    margin-right: 30px;
+}
+
 .link--impt {
     display: none;
 }
