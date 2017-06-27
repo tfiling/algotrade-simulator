@@ -1,11 +1,11 @@
 # coding=utf-8
 import numpy as np
-import csv
 import pandas as pn
 import os
 from dateutil.parser import parse
 import datetime
 import pickle
+pn.options.mode.chained_assignment = None
 
 src_path = os.path.dirname(os.path.dirname(__file__))
 data = {}
@@ -36,6 +36,13 @@ def calculateStandardDeviation():
     sharpeRatio = averageProfit / standardDeviation
     return(averageProfit, standardDeviation, sharpeRatio)
 
+
+
+def calculateStandardDeviation():
+    averageProfit = np.average(chartChangesList)
+    standardDeviation = np.std(chartChangesList)
+    sharpeRatio = averageProfit / standardDeviation
+    return averageProfit, standardDeviation, sharpeRatio
 
 
 # load stocks from csv files
@@ -140,8 +147,7 @@ def computeStockWeight(stock, sum_i):  # Q*F*f*P/sum(i)(#Q*F*f*P)
 
 # compute Index value by using yesterday's index value - see referents in the pdf file from ofer
 def computeIndex(IYesterday, stocks):
-#    print [str(s.wightForFactorCheak.values[0])+"%"+str(s.closeValueAG.values[0])+"*"+str(s.baseValue.values[0]) for s in stocks]
-
+    # print [str(s.wightForFactorCheak.values[0])+"%"+str(s.closeValueAG.values[0])+"*"+str(s.baseValue.values[0]) for s in stocks]
     sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
     print(sumStocks)
     chartChangesList.append(sumStocks)
@@ -149,7 +155,6 @@ def computeIndex(IYesterday, stocks):
 
 
 def computeIndexUS(iyesterday, stocks):
-
     return iyesterday * sum([s.closeValueNormlize.values[0] / (s.baseValue.values[0]*len([a for a in stocks if not a.empty])) for s in stocks if not s.empty])
 
 
@@ -161,13 +166,11 @@ def mixTwoindexes(idx1, idx2, precent1, precent2):
     return (idx1 * precent1 / 100) + (idx2 * precent2 / 100)
 
 
-
-
 def tryReadFromMemory(key):
     try:
         ILstocksMMM = pn.read_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
         return ILstocksMMM
-    except Exception as e:
+    except:
         return None
 
 def tryReadStatisticsFromMemory(key):
@@ -181,8 +184,19 @@ def tryReadStatisticsFromMemory(key):
         return (None, None, None)
 
 
+def tryReadStatisticsFromMemory(key):
+    filePath = os.path.join(src_path, 'newIndexes/' + key + 'Statistics')
+    try:
+        with open(filePath + '.pkl', 'rb') as f:
+            statisticsDict = pickle.load(f)
+            return statisticsDict["sharpeRatio"], statisticsDict["standardDeviation"], statisticsDict["averageProfit"]
+    except Exception as e:
+        print(e)
+        return None, None, None
+
+
 def writeNewIndexToFile(key, newIdx):
-        newIdx.to_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
+    newIdx.to_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
 
 def writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit):
     try:
@@ -195,20 +209,31 @@ def writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit):
         print(e)
 
 
-def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1,real_index=None):
-    last = None;
-    sharpeRatio = None;
-    standardDeviation = None;
-    averageProfit = None;
-    key = str(numOfStocks)+str(weightLimit)+str(withUS)+str(numOfStocksToLoad)
+def writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit):
+    try:
+        if sharpeRatio is not None and standardDeviation is not None and averageProfit is not None:
+            filePath = os.path.join(src_path, 'newIndexes/' + key + 'Statistics')
+            statisticsDict = {
+                "sharpeRatio": sharpeRatio,
+                "standardDeviation": standardDeviation,
+                "averageProfit": averageProfit
+            }
+            with open(filePath + '.pkl', 'wb') as f:
+                pickle.dump(statisticsDict, f, pickle.HIGHEST_PROTOCOL)
+    except Exception as e:
+        print(e)
+
+
+def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1, indexName=None):
+    last = None
+    key = [str(numOfStocks), str(weightLimit), str(withUS), str(numOfStocksToLoad), str(indexName)]
+    key = '_'.join(key)
     readFile = tryReadFromMemory(key)
-    (sharpeRatio, standardDeviation, averageProfit) = tryReadStatisticsFromMemory(key)
-    if(readFile is not None) and (sharpeRatio is not None) and (standardDeviation is not None) and (averageProfit is not None):
-        return (readFile, sharpeRatio, standardDeviation, averageProfit)
+    sharpeRatio, standardDeviation, averageProfit = tryReadStatisticsFromMemory(key)
+    if (readFile is not None) and (sharpeRatio is not None) and (standardDeviation is not None) and (averageProfit is not None):
+        return readFile, sharpeRatio, standardDeviation, averageProfit
 
     ILStocks, USStocks = loadStocks(withUS, numOfStocksToLoad)
-
-
 
     # filter empty data
     ILStocks = [x for x in ILStocks if not x.empty]
@@ -224,25 +249,29 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
         s['publicHoldingsWorth'] = pn.Series(1, index=newIdx.index)  # initalize limit factor
     for s in ILStocks:
         s['wightForFactorCheak'] = pn.Series(0, index=newIdx.index)  # initalize limit factor
-    startValue =   startValue = real_index.loc[real_index.shape[0]-1]['indexBasePrice']
+    if indexName is not None:
+        real_index = getStockIndex(indexName)
+        startValue = real_index.loc[real_index.shape[0]-1]['indexBasePrice']
+    else:
+        startValue = 1000
     idxStocks = []
     lastValueIL = startValue
     lastValueUS = startValue
     dayCounter = 0
     stopCounter = 0
+
     for i in newIdx['date']:
         # update indexes in the 1 of the month (or the start)
         dayCounter += 1
         stopCounter += 1
-        #stop calc for testing TODO remove
+        # stop calc for testing TODO remove
         # if (stopCounter > 20) :
         #     break
-            #########
+        #########
         parsedDate = parse(i, dayfirst=True)
 
         if USStocks is not None:
             USStocksDay = list(s.loc[s['date'] == i] for s in USStocks)
-
             j = parsedDate - datetime.timedelta(days=2)
 
             if USStocksDay[0].empty:  # skip weekends
@@ -250,17 +279,13 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
             else:
                 last = USStocksDay
 
-
         if idxStocks == [] or (1 <= parsedDate.day <= 10 and dayCounter > 25):
-
             dayCounter = 0
             idxStocks = getIndexStocks(ILStocks, numOfStocks, i)
-            #for t in idxStocks: print t.stockID
+            # for t in idxStocks: print t.stockID
             # pick the first n high value stocks
             # Take the current day from each stock in the new index
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
-
-
 
             # limit the run to 50 times
             for r in range(0, 50):
@@ -299,10 +324,10 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
                 lastWightForFactorCheak = [s['wightForFactorCheak'] for s in idxStocksDay]
         else:
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
+            for index, x in enumerate(idxStocksDay):
+                idxStocksDay[index]['wightForFactorCheak'] = lastWightForFactorCheak[index]
 
-            for index,x in  enumerate(idxStocksDay) : idxStocksDay[index]['wightForFactorCheak'] = lastWightForFactorCheak[index]
-
-        if(str(i) == "29/04/2013"):
+        if str(i) == "29/04/2013":
             a = 6
         # weight for each stock
         sumWight = sum([computeFFMCap(s) for s in idxStocksDay])
@@ -318,21 +343,30 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
             # mix both indexes
             usfactor = US_PRECENTAGE * len(USStocksDay)
             value = lastValueUS*usfactor + lastValueIL * (1 - usfactor)
-            newIdx.loc[newIdx['date'] == i,'value'] = value
+            newIdx.loc[newIdx['date'] == i, 'value'] = value
         else:
             newIdx.loc[newIdx['date'] == i, 'value'] = lastValueIL
             print str(i) + '#' + str(lastValueIL)
 
-    (averageProfit, standardDeviation, sharpeRatio) = calculateStandardDeviation()
+# <<<<<<< HEAD
+#     (averageProfit, standardDeviation, sharpeRatio) = calculateStandardDeviation()
+#     newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
+#
+#     writeNewIndexToFile(key,newIdx)
+#     writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit)
+#     return (newIdx, sharpeRatio, standardDeviation, averageProfit)
+# =======
+    averageProfit, standardDeviation, sharpeRatio = calculateStandardDeviation()
     newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
 
-    writeNewIndexToFile(key,newIdx)
+    writeNewIndexToFile(key, newIdx)
     writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit)
-    return (newIdx, sharpeRatio, standardDeviation, averageProfit)
+    return newIdx, sharpeRatio, standardDeviation, averageProfit
+# >>>>>>> e6c0fc8476e75a567965971293f1ae91cd424be3
 
 
 if __name__ == '__main__':
-    df = computeNewIndex(numOfStocks=35, weightLimit=0.07,withUS=False,real_index=getStockIndex("TA-35"))
+    df = computeNewIndex(numOfStocks=35, weightLimit=0.07, withUS=False, indexName="TA-35")
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
