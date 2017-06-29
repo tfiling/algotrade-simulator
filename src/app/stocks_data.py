@@ -51,12 +51,12 @@ def calculateStandardDeviation():
 
 
 # load stocks from csv files
-def loadStocks(includeWorld, num=-1):
+def loadStocks(includeWorld):
     stocks = []
     ILstocksMMM = pn.read_csv(os.path.join(src_path, 'ILstocksMMM.csv'), skiprows=[0, 1, 2],
                               error_bad_lines=False, encoding='Windows-1255')
     ILstocksMMM.columns = ['name', 'symbol', 'ID', 'numOfStocksInIndex', 'precentageOfPublicHoldings', 'date', 'change']
-    for f in os.listdir(os.path.join(src_path, 'IL_stocks'))[:num]:
+    for f in os.listdir(os.path.join(src_path, 'IL_stocks')):
         ilStock = pn.read_csv(os.path.join(src_path, 'IL_stocks/' + f), skiprows=[0, 1],
                               error_bad_lines=False, encoding='Windows-1255')
         ilStock.fillna(ilStock.mean())  # fill nan value
@@ -243,9 +243,9 @@ def writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit):
         print(e)
 
 
-def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1, indexName=None):
+def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
     last = None
-    key = [str(numOfStocks), str(weightLimit), str(withUS), str(numOfStocksToLoad), str(indexName)]
+    key = [str(numOfStocks), str(weightLimit), str(withUS), str(indexName)]
     key = '_'.join(key)
     logFileName = "%s_%s.txt" % (key, datetime.datetime.now().strftime("%d-%m-%y_%H-%M"))
     logFilePath = os.path.join(src_path, 'log/' + logFileName)
@@ -256,7 +256,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
         logging.info("Simulator already calculated => loading saved data from file")
         return readFile, sharpeRatio, standardDeviation, averageProfit
 
-    ILStocks, USStocks = loadStocks(withUS, numOfStocksToLoad)
+    ILStocks, USStocks = loadStocks(withUS)
     # filter empty data
     ILStocks = [x for x in ILStocks if not x.empty]
 
