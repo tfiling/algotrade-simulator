@@ -19,19 +19,8 @@ def home(request):
                 withUS=form.cleaned_data['with_us_stocks'],
                 indexName=index_name)
 
-# <<<<<<< HEAD
-#             (simulated_data, sharpeRatio, standardDeviation, averageReturn) = stocks_data.computeNewIndex(numOfStocks=form.cleaned_data['num_stocks'],
-#                                                          weightLimit=float(form.cleaned_data['max_weight'])/100.0,
-#                                                          withUS=form.cleaned_data['with_us_stocks'],
-#                                                          real_index = real_data)
-#
-#             # simulated_data = pd.read_csv(os.path.dirname(os.path.dirname(__file__)) + '/newindex_15_1.csv')
-#             graph = mark_safe(create_graph(simulated_data, real_data, sharpeRatio, standardDeviation, averageReturn))
-#             return render(request, 'index.html', {'upload': False, 'graph': graph})
-# =======
             graph = mark_safe(create_graph(simulated_data, real_data))
             return render(request, 'index.html', {'upload': False, 'graph': graph, 'sharpe':sharpe,
                                                   'std': std, 'avg_profit': avg_profit})
-# >>>>>>> e6c0fc8476e75a567965971293f1ae91cd424be3
             # messages.warning(request, 'Input file should be a CSV file only.')
     return render(request, 'index.html', {'upload': True, 'form': form})

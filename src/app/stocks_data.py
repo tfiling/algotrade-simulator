@@ -33,13 +33,14 @@ def getStockIDAndName(file_name):
     return stock_id, stock_name
 
 def calculateStandardDeviation():
-    averageProfit = np.average(chartChangesList)
+    filteredChartChangesList = [x for x in chartChangesList if not np.isnan(x)]
+    averageProfit = np.average(filteredChartChangesList)
     averageProfit = ((1 + averageProfit)**254) - 1
-    standardDeviation = np.std(chartChangesList)
+    standardDeviation = np.std(filteredChartChangesList)
     standardDeviation = standardDeviation * (254**0.5)
     sharpeRatio = averageProfit / standardDeviation
     print("====calculateStandardDeviation====")
-    print(chartChangesList)
+    print(filteredChartChangesList)
     print("std:")
     print(standardDeviation)
     print("sharpe ratio:")
@@ -242,14 +243,20 @@ def writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit):
     except Exception as e:
         print(e)
 
+def startLogger(key = None):
+    if not os.path.exists(os.path.join(src_path, 'log/')):
+        os.makedirs(os.path.join(src_path, 'log/'))
+    logFileName = "%s_%s.txt" % (key, datetime.datetime.now().strftime("%d-%m-%y_%H-%M"))
+    logFilePath = os.path.join(src_path, 'log/' + logFileName)
+    logging.basicConfig(filename = logFilePath, format = '%(asctime)s - %(message)s', level= logging.DEBUG, filemode='wb')
+
+
 
 def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
     last = None
     key = [str(numOfStocks), str(weightLimit), str(withUS), str(indexName)]
     key = '_'.join(key)
-    logFileName = "%s_%s.txt" % (key, datetime.datetime.now().strftime("%d-%m-%y_%H-%M"))
-    logFilePath = os.path.join(src_path, 'log/' + logFileName)
-    logging.basicConfig(filename = logFilePath, format = '%(asctime)s - %(message)s', level= logging.DEBUG, filemode='wb')
+    startLogger(key)
     readFile = tryReadFromMemory(key)
     sharpeRatio, standardDeviation, averageProfit = tryReadStatisticsFromMemory(key)
     if (readFile is not None) and (sharpeRatio is not None) and (standardDeviation is not None) and (averageProfit is not None):

@@ -50,11 +50,17 @@
             <div class="col-lg-12">
                 <a id="back-home" class="btn btn-primary" href="{% url "home" %}">Back to home</a>
                 <p id="stats">
-                    Sharpe: {{ sharpe|floatformat:3 }}
+                    Sharpe:
                     <br>
-                    STD: {{ std|floatformat:3 }}
+                    {{ sharpe|floatformat:3 }}
                     <br>
-                    Avg. Profit: {{ avg_profit|floatformat:3 }}
+                    STD:
+                    <br>
+                    {{ std|floatformat:3 }}
+                    <br>
+                    Avg. Profit:
+                    <br>
+                    {{ avg_profit|floatformat:3 }}
                 </p>
                 <p style="padding: 0; width: 0; height: 0; margin: 15px 0;"></p>
                 {{ graph }}
