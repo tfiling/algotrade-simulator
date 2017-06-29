@@ -5,6 +5,7 @@ import os
 from dateutil.parser import parse
 import datetime
 import pickle
+import logging
 pn.options.mode.chained_assignment = None
 
 src_path = os.path.dirname(os.path.dirname(__file__))
@@ -32,16 +33,19 @@ def getStockID(file_name):
 
 def calculateStandardDeviation():
     averageProfit = np.average(chartChangesList)
+    averageProfit = ((1 + averageProfit)**254) - 1
     standardDeviation = np.std(chartChangesList)
+    standardDeviation = standardDeviation * (254**0.5)
     sharpeRatio = averageProfit / standardDeviation
-    return(averageProfit, standardDeviation, sharpeRatio)
+    print("====calculateStandardDeviation====")
+    print(chartChangesList)
+    print("std:")
+    print(standardDeviation)
+    print("sharpe ratio:")
+    print(sharpeRatio)
+    print("averageReturn:")
+    print(averageProfit)
 
-
-
-def calculateStandardDeviation():
-    averageProfit = np.average(chartChangesList)
-    standardDeviation = np.std(chartChangesList)
-    sharpeRatio = averageProfit / standardDeviation
     return averageProfit, standardDeviation, sharpeRatio
 
 
@@ -149,8 +153,7 @@ def computeStockWeight(stock, sum_i):  # Q*F*f*P/sum(i)(#Q*F*f*P)
 def computeIndex(IYesterday, stocks):
     # print [str(s.wightForFactorCheak.values[0])+"%"+str(s.closeValueAG.values[0])+"*"+str(s.baseValue.values[0]) for s in stocks]
     sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
-    print(sumStocks)
-    chartChangesList.append(sumStocks)
+    chartChangesList.append(sumStocks - 1)
     return IYesterday * sumStocks
 
 
@@ -228,9 +231,13 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
     last = None
     key = [str(numOfStocks), str(weightLimit), str(withUS), str(numOfStocksToLoad), str(indexName)]
     key = '_'.join(key)
+    logFileName = "%s_%s.txt" % (key, datetime.datetime.now().strftime("%d-%m-%y_%H-%M"))
+    logFilePath = os.path.join(src_path, 'log/' + logFileName)
+    logging.basicConfig(filename = logFilePath, format = '%(asctime)s - %(message)s', level= logging.DEBUG, filemode='wb')
     readFile = tryReadFromMemory(key)
     sharpeRatio, standardDeviation, averageProfit = tryReadStatisticsFromMemory(key)
     if (readFile is not None) and (sharpeRatio is not None) and (standardDeviation is not None) and (averageProfit is not None):
+        logging.info("Simulator already calculated => loading saved data from file")
         return readFile, sharpeRatio, standardDeviation, averageProfit
 
     ILStocks, USStocks = loadStocks(withUS, numOfStocksToLoad)
@@ -348,21 +355,12 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
             newIdx.loc[newIdx['date'] == i, 'value'] = lastValueIL
             print str(i) + '#' + str(lastValueIL)
 
-# <<<<<<< HEAD
-#     (averageProfit, standardDeviation, sharpeRatio) = calculateStandardDeviation()
-#     newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
-#
-#     writeNewIndexToFile(key,newIdx)
-#     writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit)
-#     return (newIdx, sharpeRatio, standardDeviation, averageProfit)
-# =======
     averageProfit, standardDeviation, sharpeRatio = calculateStandardDeviation()
     newIdx['date'] = newIdx['date'].apply(lambda d: parse(d, dayfirst=True).strftime('%Y-%m-%d'))
 
     writeNewIndexToFile(key, newIdx)
     writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit)
     return newIdx, sharpeRatio, standardDeviation, averageProfit
-# >>>>>>> e6c0fc8476e75a567965971293f1ae91cd424be3
 
 
 if __name__ == '__main__':
