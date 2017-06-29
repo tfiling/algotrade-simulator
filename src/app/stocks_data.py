@@ -115,6 +115,11 @@ def getStockIndex(idxName):
 def getIndexStocks(allStocks, numOfStocks, date):
     allStocks.sort(lambda stock1, stock2: biggerThan(stock1.loc[stock1['date'] == date],
                                                      stock2.loc[stock2['date'] == date]))
+
+    #for s in  allStocks[:int(numOfStocks)] :
+     #   print s['stockIdentifier'].values[0]
+     #   print s.loc[s['date'] == date].baseValue.values[0] * s.loc[s['date'] == date].numOfStocksInIndex.values[0]
+     # print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
     return allStocks[:int(numOfStocks)]
 
 
@@ -158,6 +163,7 @@ def computeIndex(IYesterday, stocks):
     sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
     chartChangesList.append(sumStocks - 1)
     # print to log info about each stock
+    #for s in stocks: print s['stockIdentifier'].values[0]
     for s in stocks:
         name = s['stockIdentifier'].values[0]
         weight = "%d%s" % (int((s.wightForFactorCheak.values[0]) * 100), "%")
@@ -352,6 +358,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
 
         logging.info("===============================================================")
         logging.info("========= stocks information for date %s ==========" % i)
+
         lastValueIL = computeIndex(lastValueIL, idxStocksDay)
 
         if USStocks is not None:
@@ -374,7 +381,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, numOfStocksToLoad=-1
 
 
 if __name__ == '__main__':
-    df = computeNewIndex(numOfStocks=35, weightLimit=0.07, withUS=False, indexName="TA-35")
+    df = computeNewIndex(numOfStocks=34, weightLimit=0.07, withUS=False, indexName="TA-35")
     # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
     # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
