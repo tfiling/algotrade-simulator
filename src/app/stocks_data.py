@@ -138,8 +138,7 @@ def biggerThan(stock2, stock1):
 
 # see reference in the pdf file from ofer
 def computeFFMCap(s):  # f*Q*P*F
-
-    return (s.wightLimitFactor.values[0] * s.baseValue.values[0] *
+     return (s.wightLimitFactor.values[0] * s.baseValue.values[0] *
             s.numOfStocksInIndex.values[0] * computeBigF(s.precentageOfPublicHoldings.values[0]))
 
 
@@ -165,7 +164,7 @@ def computeIndex(IYesterday, stocks):
     sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
     chartChangesList.append(sumStocks - 1)
     # print to log info about each stock
-  
+    for s in stocks: print s.wightForFactorCheak.values[0]
     for s in stocks:
         name = s['stockIdentifier'].values[0]
         weight = "%d%s" % (int((s.wightForFactorCheak.values[0]) * 100), "%")
@@ -325,7 +324,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
                     s.publicHoldingsWorth = computeFFMCap(s)
                 wightLimitFactorSum = sum(s.publicHoldingsWorth for s in idxStocksDay)
                 for s in idxStocksDay:
-                    s.wightForFactorCheak = s.publicHoldingsWorth / wightLimitFactorSum
+                    s.wightForFactorCheak = s.publicHoldingsWorth*1.0 / wightLimitFactorSum
 
                 # numpy.isclose(a, b, rtol=1e-05, atol=1e-08, equal_nan=False) rational round
                 FFMCapOverWeight = [s for s in idxStocksDay if s.wightForFactorCheak.values[0] > weightLimit and
@@ -361,17 +360,17 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
         else:
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
             for index, x in enumerate(idxStocksDay):
-                idxStocksDay[index].wightLimitFactor.set_value("wightLimitFactor",lastWightLimitFactor[index])
-                #print str(index) + ":" + str(lastWightLimitFactor[index])
-                #print idxStocksDay[index].wightLimitFactor
-            sdds = lastWightLimitFactor
-
+                x.wightLimitFactor = lastWightLimitFactor[index].values[0]
 
         dd = 6
         # weight for each stock
         sumWight = sum([computeFFMCap(s) for s in idxStocksDay])
+
+
+
+
         for s in idxStocksDay:
-            s.wightForFactorCheak = computeStockWeight(s, sumWight)
+            s.wightForFactorCheak =  computeStockWeight(s, sumWight)
 
 
         # compute date i value
