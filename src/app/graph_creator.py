@@ -17,14 +17,6 @@ def create_graph(simulated_index, real_index=None, sharpeRatio = None, standardD
                           name='Real index', line=dict(color='#7F7F7F'), opacity=0.8)
         data.append(real)
 
-    print("=======")
-    print("std:")
-    print(standardDeviation)
-    print("sharpe ratio:")
-    print(sharpeRatio)
-    print("averageReturn:")
-    print(averageReturn)
-
     layout = dict(
         title='Simulated index VS. Real index',
         autosize=True,
