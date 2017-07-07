@@ -137,6 +137,7 @@ def biggerThan(stock2, stock1):
 
 # see reference in the pdf file from ofer
 def computeFFMCap(s):  # f*Q*P*F
+
     return (s.wightLimitFactor.values[0] * s.baseValue.values[0] *
             s.numOfStocksInIndex.values[0] * computeBigF(s.precentageOfPublicHoldings.values[0]))
 
@@ -163,7 +164,7 @@ def computeIndex(IYesterday, stocks):
     sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
     chartChangesList.append(sumStocks - 1)
     # print to log info about each stock
-    #for s in stocks: print s['stockIdentifier'].values[0]
+  
     for s in stocks:
         name = s['stockIdentifier'].values[0]
         weight = "%d%s" % (int((s.wightForFactorCheak.values[0]) * 100), "%")
@@ -281,6 +282,7 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
     lastValueUS = startValue
     dayCounter = 0
     stopCounter = 0
+    lastWightLimitFactor = []
 
     for i in newIdx['date']:
         # update indexes in the 1 of the month (or the start)
@@ -332,28 +334,39 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
                     if (s.wightForFactorCheak.values[0] > np.float(weightLimit) and
                             not np.isclose(s.wightForFactorCheak.values[0], weightLimit)):
                         s.publicHoldingsWorth = weightLimit * FFMCapQidx
+
                         # print(s.publicHoldingsWorth / wightLimitFactorSum)
 
                     s.wightLimitFactor = s.publicHoldingsWorth / (computeBigF(s.precentageOfPublicHoldings.values[0]) *
                                                                   s.baseValue.values[0] *
                                                                   s.numOfStocksInIndex.values[0])
 
+
                 # loop until no function value is over the limit
                 if not [s for s in idxStocksDay if s.wightForFactorCheak.values[0] > weightLimit and
                         not np.isclose(s.wightForFactorCheak.values[0], weightLimit)]:
+
                     break  # loop until this happend
-                lastWightForFactorCheak = [s['wightForFactorCheak'] for s in idxStocksDay]
+                #lastWightForFactorCheak = [s['wightForFactorCheak'] for s in idxStocksDay]
+                lastWightLimitFactor = [s['wightLimitFactor'] for s in idxStocksDay]
+            #print lastWightLimitFactor
+
         else:
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
             for index, x in enumerate(idxStocksDay):
-                idxStocksDay[index]['wightForFactorCheak'] = lastWightForFactorCheak[index]
+                idxStocksDay[index].wightLimitFactor.set_value("wightLimitFactor",lastWightLimitFactor[index])
+                #print str(index) + ":" + str(lastWightLimitFactor[index])
+                #print idxStocksDay[index].wightLimitFactor
+            sdds = lastWightLimitFactor
 
-        if str(i) == "29/04/2013":
-            a = 6
+
+        dd = 6
         # weight for each stock
         sumWight = sum([computeFFMCap(s) for s in idxStocksDay])
         for s in idxStocksDay:
             s.wightForFactorCheak = computeStockWeight(s, sumWight)
+
+
         # compute date i value
 
         logging.info("===============================================================")
