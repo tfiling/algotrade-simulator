@@ -164,7 +164,6 @@ def computeIndex(IYesterday, stocks):
     sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
     chartChangesList.append(sumStocks - 1)
     # print to log info about each stock
-    for s in stocks: print s.wightForFactorCheak.values[0]
     for s in stocks:
         name = s['stockIdentifier'].values[0]
         weight = "%d%s" % (int((s.wightForFactorCheak.values[0]) * 100), "%")
