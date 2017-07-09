@@ -32,22 +32,21 @@ def getStockIDAndName(file_name):
         stock_name = content.split('-')[1].strip()
     return stock_id, stock_name
 
+
 def calculateStandardDeviation():
+    global chartChangesList
     filteredChartChangesList = [x for x in chartChangesList if not np.isnan(x)]
     averageProfit = np.average(filteredChartChangesList)
     averageProfit = ((1 + averageProfit)**254) - 1
     standardDeviation = np.std(filteredChartChangesList)
-    standardDeviation = standardDeviation * (254**0.5)
+    standardDeviation *= 254 ** 0.5
     sharpeRatio = averageProfit / standardDeviation
     print("====calculateStandardDeviation====")
     print(filteredChartChangesList)
-    print("std:")
-    print(standardDeviation)
-    print("sharpe ratio:")
-    print(sharpeRatio)
-    print("averageReturn:")
-    print(averageProfit)
-
+    print("std: ", standardDeviation)
+    print("sharpe ratio: ", sharpeRatio)
+    print("averageReturn: ", averageProfit)
+    chartChangesList = []
     return averageProfit, standardDeviation, sharpeRatio
 
 
@@ -65,7 +64,8 @@ def loadStocks(includeWorld):
         ilStock.IL_stocks = True
         ilStock.stockID, name = getStockIDAndName(f)
         newIdx = pn.DataFrame(ilStock['date']).iloc[::-1]
-        ilStock['stockIdentifier'] = pn.Series(name, index=newIdx.index)  # add a column for the stock's name(each row will contain the stock's name)
+        # add a column for the stock's name(each row will contain the stock's name)
+        ilStock['stockIdentifier'] = pn.Series(name, index=newIdx.index)
 
         # save data from general file on the stock (MMM,public precentage)
         precentage = ILstocksMMM.loc[ILstocksMMM['ID'] == int(ilStock.stockID)].precentageOfPublicHoldings.values[0]
@@ -74,7 +74,7 @@ def loadStocks(includeWorld):
             ILstocksMMM.loc[ILstocksMMM['ID'] == int(ilStock.stockID)].numOfStocksInIndex.values[0]
         stocks.append(ilStock)
 
-    # add world stocks TODO
+    # add world stocks
     if includeWorld:
         USstocks = []
         for f in os.listdir(os.path.join(src_path, 'US_stocks')):
@@ -87,7 +87,7 @@ def loadStocks(includeWorld):
             usStock.FFMCapi = 0.015
             usStock['closeValueNormlize'] = [x * 100 for x in usStock['closeValueNormlize']]  # ils to agorot
             usStock['marketCapital'] = [x * 1000 for x in usStock['marketCapital']]  # ils to 1000ILS
-            usStock['wightForFactorCheak'] = pn.Series([US_PRECENTAGE for x in usStock['marketCapital']])
+            usStock['wightForFactorCheak'] = pn.Series([US_PRECENTAGE for _ in usStock['marketCapital']])
             usStock['date'] = pn.to_datetime(usStock['date'], dayfirst=True)
             usStock['date'].fillna(method='pad', inplace=True)
             usStock['date'] = [x.strftime('%d/%m/%Y') for x in usStock['date']]
@@ -116,11 +116,6 @@ def getStockIndex(idxName):
 def getIndexStocks(allStocks, numOfStocks, date):
     allStocks.sort(lambda stock1, stock2: biggerThan(stock1.loc[stock1['date'] == date],
                                                      stock2.loc[stock2['date'] == date]))
-
-    #for s in  allStocks[:int(numOfStocks)] :
-     #   print s['stockIdentifier'].values[0]
-     #   print s.loc[s['date'] == date].baseValue.values[0] * s.loc[s['date'] == date].numOfStocksInIndex.values[0]
-     # print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
     return allStocks[:int(numOfStocks)]
 
 
@@ -138,7 +133,7 @@ def biggerThan(stock2, stock1):
 
 # see reference in the pdf file from ofer
 def computeFFMCap(s):  # f*Q*P*F
-     return (s.wightLimitFactor.values[0] * s.baseValue.values[0] *
+    return (s.wightLimitFactor.values[0] * s.baseValue.values[0] *
             s.numOfStocksInIndex.values[0] * computeBigF(s.precentageOfPublicHoldings.values[0]))
 
 
@@ -160,7 +155,8 @@ def computeStockWeight(stock, sum_i):  # Q*F*f*P/sum(i)(#Q*F*f*P)
 
 # compute Index value by using yesterday's index value - see referents in the pdf file from ofer
 def computeIndex(IYesterday, stocks):
-    # print [str(s.wightForFactorCheak.values[0])+"%"+str(s.closeValueAG.values[0])+"*"+str(s.baseValue.values[0]) for s in stocks]
+    # print [str(s.wightForFactorCheak.values[0])+"%"+str(s.closeValueAG.values[0])
+    # +"*"+str(s.baseValue.values[0]) for s in stocks]
     sumStocks = sum([s.wightForFactorCheak.values[0] * s.closeValueAG.values[0] / s.baseValue.values[0] for s in stocks])
     chartChangesList.append(sumStocks - 1)
     # print to log info about each stock
@@ -178,13 +174,13 @@ def computeIndex(IYesterday, stocks):
 
 def computeIndexUS(iyesterday, stocks):
     sumStocks = sum([s.closeValueNormlize.values[0] / (s.baseValue.values[0]*len([a for a in stocks if not a.empty])) for s in stocks if not s.empty])
-    ### save the chart changes with the us
+    chartChangesList.append(sumStocks - 1)
+    # save the chart changes with the us
     lastChartChangesElementIndex = len(chartChangesList) - 1
     lastChartChangesElement = chartChangesList[lastChartChangesElementIndex]
     usfactor = US_PRECENTAGE * len(stocks)
     valueWithUS = sumStocks * usfactor + lastChartChangesElement * (1 - usfactor)
     chartChangesList[lastChartChangesElementIndex] = valueWithUS
-    #######
     return iyesterday * sumStocks
 
 
@@ -198,13 +194,14 @@ def mixTwoindexes(idx1, idx2, precent1, precent2):
 
 def tryReadFromMemory(key):
     try:
-        ILstocksMMM = pn.read_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
+        ILstocksMMM = pn.read_csv(os.path.join(src_path, 'newIndices/' + key + ".csv"))
         return ILstocksMMM
     except:
         return None
 
+
 def tryReadStatisticsFromMemory(key):
-    filePath = os.path.join(src_path, 'newIndexes/' + key + 'Statistics')
+    filePath = os.path.join(src_path, 'newIndices/' + key + 'Statistics')
     try:
         with open(filePath + '.pkl', 'rb') as f:
             statisticsDict = pickle.load(f)
@@ -215,23 +212,13 @@ def tryReadStatisticsFromMemory(key):
 
 
 def writeNewIndexToFile(key, newIdx):
-    newIdx.to_csv(os.path.join(src_path, 'newIndexes/' + key + ".csv"))
-
-def writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit):
-    try:
-        if (sharpeRatio is not None and standardDeviation is not None and averageProfit is not None):
-            filePath = os.path.join(src_path, 'newIndexes/' + key + "Statistics")
-            statisticsDict = {"sharpeRatio" : sharpeRatio, "standardDeviation" : standardDeviation , "averageProfit" : averageProfit}
-            with open(filePath + '.pkl', 'wb') as file:
-                pickle.dump(statisticsDict, file, pickle.HIGHEST_PROTOCOL)
-    except Exception as e:
-        print(e)
+    newIdx.to_csv(os.path.join(src_path, 'newIndices/' + key + ".csv"))
 
 
 def writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit):
     try:
         if sharpeRatio is not None and standardDeviation is not None and averageProfit is not None:
-            filePath = os.path.join(src_path, 'newIndexes/' + key + 'Statistics')
+            filePath = os.path.join(src_path, 'newIndices/' + key + 'Statistics')
             statisticsDict = {
                 "sharpeRatio": sharpeRatio,
                 "standardDeviation": standardDeviation,
@@ -242,13 +229,13 @@ def writeStatisticsToFile(key, sharpeRatio, standardDeviation, averageProfit):
     except Exception as e:
         print(e)
 
-def startLogger(key = None):
+
+def startLogger(key=None):
     if not os.path.exists(os.path.join(src_path, 'log/')):
         os.makedirs(os.path.join(src_path, 'log/'))
     logFileName = "%s_%s.txt" % (key, datetime.datetime.now().strftime("%d-%m-%y_%H-%M"))
     logFilePath = os.path.join(src_path, 'log/' + logFileName)
-    logging.basicConfig(filename = logFilePath, format = '%(asctime)s - %(message)s', level= logging.DEBUG, filemode='wb')
-
+    logging.basicConfig(filename=logFilePath, format='%(asctime)s - %(message)s', level=logging.DEBUG, filemode='wb')
 
 
 def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
@@ -293,15 +280,10 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
         # update indexes in the 1 of the month (or the start)
         dayCounter += 1
         stopCounter += 1
-        # stop calc for testing TODO remove
-        # if (stopCounter > 20) :
-        #     break
-        #########
         parsedDate = parse(i, dayfirst=True)
 
         if USStocks is not None:
             USStocksDay = list(s.loc[s['date'] == i] for s in USStocks)
-            j = parsedDate - datetime.timedelta(days=2)
 
             if USStocksDay[0].empty:  # skip weekends
                 USStocksDay = last
@@ -332,48 +314,39 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
 
                 FFMCapNonCap = (sum([s.publicHoldingsWorth for s in idxStocksDay]) -
                                 sum([s.publicHoldingsWorth for s in FFMCapOverWeight]))
-                FFMCapQidx = FFMCapNonCap / (1 - sum(weightLimit for _ in FFMCapOverWeight))  # TODO weightLimit?
+                FFMCapQidx = FFMCapNonCap / (1 - sum(weightLimit for _ in FFMCapOverWeight))
                 # print(sum(s.wightForFactorCheak for s in idxStocksDay))
                 for s in idxStocksDay:
                     # print(s.wightForFactorCheak.values[0])
                     if (s.wightForFactorCheak.values[0] > np.float(weightLimit) and
                             not np.isclose(s.wightForFactorCheak.values[0], weightLimit)):
                         s.publicHoldingsWorth = weightLimit * FFMCapQidx
-
                         # print(s.publicHoldingsWorth / wightLimitFactorSum)
 
                     s.wightLimitFactor = s.publicHoldingsWorth / (computeBigF(s.precentageOfPublicHoldings.values[0]) *
                                                                   s.baseValue.values[0] *
                                                                   s.numOfStocksInIndex.values[0])
 
-
                 # loop until no function value is over the limit
                 if not [s for s in idxStocksDay if s.wightForFactorCheak.values[0] > weightLimit and
                         not np.isclose(s.wightForFactorCheak.values[0], weightLimit)]:
-
                     break  # loop until this happend
-                #lastWightForFactorCheak = [s['wightForFactorCheak'] for s in idxStocksDay]
+                # lastWightForFactorCheak = [s['wightForFactorCheak'] for s in idxStocksDay]
                 lastWightLimitFactor = [s['wightLimitFactor'] for s in idxStocksDay]
-            #print lastWightLimitFactor
+            # print lastWightLimitFactor
 
         else:
             idxStocksDay = list(s.loc[s['date'] == i] for s in idxStocks)
             for index, x in enumerate(idxStocksDay):
                 x.wightLimitFactor = lastWightLimitFactor[index].values[0]
 
-        dd = 6
         # weight for each stock
         sumWight = sum([computeFFMCap(s) for s in idxStocksDay])
 
-
-
-
         for s in idxStocksDay:
-            s.wightForFactorCheak =  computeStockWeight(s, sumWight)
-
+            s.wightForFactorCheak = computeStockWeight(s, sumWight)
 
         # compute date i value
-
         logging.info("===============================================================")
         logging.info("========= stocks information for date %s ==========" % i)
 
@@ -400,7 +373,4 @@ def computeNewIndex(numOfStocks, weightLimit, withUS=False, indexName=None):
 
 if __name__ == '__main__':
     df = computeNewIndex(numOfStocks=34, weightLimit=0.07, withUS=False, indexName="TA-35")
-    # df = computeNewIndex(numOfStocks=5, weightLimit=0.3, numOfStocksToLoad=10)
-    # df.to_csv(os.path.join(src_path, 'newindex_15_1.csv'))
     print(df)
-
