@@ -4,8 +4,8 @@
 
 - [What's New?](#whats-new)
 
-<a name="whats-new"></a>
-![What's New](http://phaser.io/images/github/div-whats-new.png "What's New")
+<a name="whats-new">What's New?</a>
+![What's New]
 
 
 Welcome!
